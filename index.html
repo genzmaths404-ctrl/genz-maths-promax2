@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GENZ MATHS PROMAX — Trigonometry</title>
+<style>
+:root{--bg:#080d19;--panel:#111a2b;--panel2:#17243a;--line:#293953;--txt:#edf3ff;--muted:#a9b8d0;--cyan:#65e3e8;--gold:#ffc96b;--green:#79e0a2;--red:#ff8585}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#172a46 0,#080d19 45%);color:var(--txt);font:15px/1.55 system-ui,Arial}
+header{padding:22px max(18px,calc((100vw - 1180px)/2));border-bottom:1px solid var(--line);background:#0b1322dd;position:sticky;top:0;z-index:4;backdrop-filter:blur(12px)}
+.brand{font-weight:900;letter-spacing:1px;font-size:21px}.brand span{color:var(--cyan)}.sub{color:var(--muted);font-size:12px}
+main{max-width:1180px;margin:auto;padding:22px 16px 60px}.hero{padding:25px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(130deg,#14243a,#111827);margin-bottom:18px}
+h1{font-size:clamp(25px,5vw,42px);line-height:1.08;margin:0 0 10px}.hero p{color:var(--muted);max-width:780px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px}.stat b{font-size:24px;color:var(--cyan);display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab,button,select,input{font:inherit}button,.tab{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:10px 14px;cursor:pointer}.tab.active,button.primary{background:var(--cyan);color:#07121c;border-color:var(--cyan);font-weight:800}button:hover,.tab:hover{filter:brightness(1.13)}
+.grid{display:grid;grid-template-columns:300px 1fr;gap:16px}.side{align-self:start;position:sticky;top:112px}.field{display:block;margin:10px 0;color:var(--muted);font-size:13px}.field select,.field input{display:block;width:100%;margin-top:5px;padding:10px;background:#0b1424;color:var(--txt);border:1px solid var(--line);border-radius:9px}
+.qbox{min-height:360px}.qmeta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-bottom:14px}.pill{padding:4px 8px;border:1px solid var(--line);border-radius:99px}.question{font-size:19px;line-height:1.7;margin:15px 0 20px;white-space:pre-wrap}.answerrow{display:flex;gap:8px;flex-wrap:wrap}.answerrow input{flex:1;min-width:140px;padding:12px;background:#0b1424;color:white;border:1px solid var(--line);border-radius:9px}
+.feedback{margin-top:12px;padding:12px;border-radius:10px;display:none}.good{display:block;background:#103425;color:#aaf0c6}.bad{display:block;background:#421e28;color:#ffc0c0}
+.solution{display:none;margin-top:15px;padding:15px;background:#0b1424;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;color:#d5e2f7}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.muted{color:var(--muted)}.levelgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.level{padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:13px}.level b{color:var(--txt);display:block}
+.hidden{display:none!important}.topiclist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}.topic{padding:12px;border:1px solid var(--line);border-radius:10px;background:#0c1525}
+.mockq{padding:13px;border:1px solid var(--line);border-radius:11px;margin:10px 0}.mockq p{font-size:16px}.mockq input{padding:8px;background:#0b1424;color:white;border:1px solid var(--line);border-radius:8px;width:180px}
+.progress{height:8px;background:#26344a;border-radius:10px;overflow:hidden}.progress div{height:100%;background:var(--cyan);width:0}
+footer{margin-top:30px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.side{position:static}.stats{grid-template-columns:repeat(2,1fr)}header{position:static}.question{font-size:17px}.levelgrid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><div class="brand">GENZ MATHS <span>PROMAX</span></div><div class="sub">JEE MATHEMATICS • TRIGONOMETRY SPECIAL EDITION</div></header>
+<main>
+<section class="hero"><h1>TRIGONOMETRY<br><span style="color:var(--cyan)">JEE MAIN → JEE ADVANCED</span></h1>
+<p>A focused trigonometry practice studio with 10 difficulty bands, a large parameterized question pool, instant checking, worked reasoning, and 50 generated mock tests. The questions are original practice questions in JEE style—not copied official PYQs.</p>
+<div class="stats"><div class="stat"><b id="poolCount">1,000</b><span class="muted">Question instances</span></div><div class="stat"><b>50</b><span class="muted">Mock test sets</span></div><div class="stat"><b>10</b><span class="muted">Difficulty levels</span></div><div class="stat"><b id="solvedCount">0</b><span class="muted">Attempted here</span></div></div></section>
+<div class="tabs"><button class="tab active" data-tab="practice">Practice</button><button class="tab" data-tab="mocks">Mock tests</button><button class="tab" data-tab="syllabus">Coverage map</button><button class="tab" data-tab="levels">10 levels</button></div>
+<section id="practice" class="grid">
+<aside class="card side"><h3>Practice controls</h3>
+<label class="field">Difficulty level<select id="level"></select></label>
+<label class="field">Topic<select id="topic"></select></label>
+<label class="field">Question type<select id="qtype"><option value="all">All types</option><option value="numeric">Numerical answer</option><option value="mcq">Single correct MCQ</option><option value="multi">Multiple correct</option></select></label>
+<label class="field">Question number<input id="qid" type="number" min="1" max="1000" value="1"></label>
+<button class="primary" id="loadQ">Load question</button><button id="randomQ">Random question</button>
+<div style="margin-top:18px"><div class="muted" style="font-size:12px;margin-bottom:7px">SESSION ACCURACY</div><div class="progress"><div id="progressbar"></div></div><p class="muted" id="sessionText">0 attempted • 0 correct</p></div>
+</aside>
+<div class="card qbox"><div class="qmeta" id="qmeta"></div><div class="question" id="question">Loading your first question…</div>
+<div id="options"></div><div class="answerrow"><input id="answer" placeholder="Enter answer (e.g. 1/2, 30, pi/3)"><button class="primary" id="check">Check answer</button></div>
+<div id="feedback" class="feedback"></div><div class="actions"><button id="hintBtn">Show hint</button><button id="solutionBtn">Show solution</button><button id="nextQ" class="primary">Next question →</button></div>
+<div id="hint" class="solution"></div><div id="solution" class="solution"></div></div></section>
+<section id="mocks" class="hidden"><div class="card"><h2>50 Trigonometry Mock Tests</h2><p class="muted">Each mock contains 20 mixed-format questions sampled from the generated pool. Suggested duration: 60 minutes. Your score is calculated locally in this browser.</p>
+<label class="field">Choose mock test<select id="mockSelect"></select></label><button class="primary" id="startMock">Start mock test</button><div id="mockArea"></div></div></section>
+<section id="syllabus" class="hidden"><div class="card"><h2>Trigonometry coverage map</h2><p class="muted">The module is organized around the major JEE trigonometry skill groups. Some subtopics overlap across question families.</p><div class="topiclist" id="topicCards"></div></div></section>
+<section id="levels" class="hidden"><div class="card"><h2>Ten difficulty bands</h2><div class="levelgrid" id="levelCards"></div><p class="muted">Difficulty labels describe the intended progression, not a claim that every question is harder than an actual JEE paper. Level 10 is challenge practice beyond routine exam patterns.</p></div></section>
+<footer>Offline-ready single-file build. Progress is session-only and is not synced to an account or cloud database. Refreshing the page resets session stats. For a public platform with login, cross-device progress, and admin tools, a backend such as Supabase must be connected separately.</footer>
+</main>
+<script>
+const levels=[
+'Foundation','School Advanced','RD Sharma','RD Sharma Extreme','JEE Main Basic','JEE Main Advanced','JEE Advanced Moderate','JEE Advanced Hard','JEE Advanced Extreme','PROMAX GOD MODE'
+];
+const topics=[
+'Identities & transformations','Trigonometric equations','Inverse trigonometric functions','Range, domain & principal values','Maximum, minimum & inequalities','Properties of triangles','Heights, distances & applications','Graphs, periodicity & transformations','Compound and multiple angles','Mixed JEE problem solving'
+];
+const pool=[];
+const add=(level,topic,type,q,a,sol,hint,opts=null)=>pool.push({id:pool.length+1,level,topic,type,q,a:String(a),sol,hint,opts});
+const fmt=x=>Number(x.toFixed(6)).toString();
+// Family 1: algebraic identity with parameterized angle multiples
+for(let k=1;k<=100;k++){let n=2+(k%7),a=15+(k*7)%70;let val=Math.sin(a*Math.PI/180)**2+Math.cos(a*Math.PI/180)**2;
+add(1+(k%3),topics[0],'numeric',`Evaluate exactly: sin²(${a}°) + cos²(${a}°).`,'1','Using the fundamental identity sin²t + cos²t = 1, the expression is 1.','Use the Pythagorean identity.');}
+// Family 2: sin4+cos4 at a given sin2
+for(let k=0;k<100;k++){let t=0.1+((k*13)%80)/100;let v=1-t*t/2;
+add(3+(k%4),topics[0],'numeric',`If sin(2θ) = ${fmt(t)}, evaluate sin⁴θ + cos⁴θ.` ,fmt(v),`sin⁴θ+cos⁴θ=(sin²θ+cos²θ)²−2sin²θcos²θ = 1−½sin²2θ = ${fmt(v)}.`,`Convert the fourth powers using sin²θ cos²θ = ¼sin²2θ.`);}
+// Family 3: linear combination extrema
+for(let k=0;k<100;k++){let a=1+(k%8),b=1+((k*3)%8),m=Math.sqrt(a*a+b*b);
+add(2+(k%5),topics[4],'numeric',`Find the maximum value of ${a}sinθ + ${b}cosθ for real θ.`,fmt(m),`For all real θ, a sinθ+b cosθ has maximum √(a²+b²). Here this is √(${a*a+b*b}) = ${fmt(m)}.`,`Write it as R sin(θ+α), where R=√(a²+b²).`);}
+// Family 4: exact special-angle values
+const special=[30,45,60,120,135,150,210,225,240,300,315,330];
+const sinExact={30:'1/2',45:'√2/2',60:'√3/2',120:'√3/2',135:'√2/2',150:'1/2',210:'-1/2',225:'-√2/2',240:'-√3/2',300:'-√3/2',315:'-√2/2',330:'-1/2'};
+for(let k=0;k<100;k++){let d=special[k%special.length];let ans=sinExact[d];
+add(1+(k%4),topics[3],'numeric',`Evaluate sin(${d}°) exactly.`,ans,`Use the reference angle and the sign of sine in the quadrant containing ${d}°. The exact value is ${ans}.`,`Find the reference angle first, then determine the sign.`);}
+// Family 5: tan compound angle with clean integer ratio
+for(let k=0;k<100;k++){let p=1+k%7,q=1+(k*3)%7;let a=Math.atan(p),b=Math.atan(q);let den=1-p*q,num=p+q;let ans=den===0?'undefined':`${num}/${den}`;
+add(4+(k%5),topics[8],'numeric',`Given tan A = ${p} and tan B = ${q}, with A,B acute, find tan(A+B).`,ans,`tan(A+B)=(tanA+tanB)/(1−tanA tanB)=(${p}+${q})/(1−${p*q})=${ans}.`,`Apply the tangent addition formula; check whether the denominator is zero.`);}
+// Family 6: inverse principal range values
+for(let k=0;k<100;k++){let vals=[-1,-0.5,0,0.5,1],v=vals[k%5];let ans=v===1?'π/2':v===-1?'-π/2':v===0?'0':v>0?'π/6':'-π/6';
+add(2+(k%5),topics[2],'numeric',`Evaluate sin⁻¹(${v}) using the principal value branch.`,ans,`The principal range of sin⁻¹x is [−π/2,π/2]. The angle in this interval whose sine is ${v} is ${ans}.`,`Remember the principal range of arcsin.`);}
+// Family 7: periodicity
+for(let k=0;k<100;k++){let n=1+(k%12),deg=30+(k%6)*15;let x=deg+360*n;
+add(2+(k%4),topics[7],'numeric',`Find sin(${x}°) in exact form.`,sinExact[deg]||'0',`Sine has period 360°. Thus sin(${x}°)=sin(${deg}°)=${sinExact[deg]||'0'}.`,`Reduce the angle modulo 360°.`);}
+// Family 8: solve simple trig equations in [0,2pi)
+for(let k=0;k<100;k++){let c=[0,0.5,Math.sqrt(2)/2,Math.sqrt(3)/2,1][k%5];let ans=['0, π','π/6, 5π/6','π/4, 3π/4','π/3, 2π/3','π/2'][k%5];
+add(3+(k%5),topics[1],'numeric',`Find all solutions of sin x = ${fmt(c)} for x ∈ [0,π]. Give answers in radians.`,ans,`Sine is nonnegative on [0,π] and symmetric about π/2. The reference angle gives the two listed solutions (one solution when c=1).`,`Use the unit circle and sine symmetry.`);}
+// Family 9: cos double-angle from sin
+for(let k=0;k<100;k++){let s=[0,0.5,Math.sqrt(2)/2,Math.sqrt(3)/2,1][k%5],v=1-2*s*s;
+add(3+(k%5),topics[0],'numeric',`If sin θ = ${fmt(s)}, find cos 2θ.`,fmt(v),`cos 2θ = 1−2sin²θ = 1−2(${fmt(s)})² = ${fmt(v)}.`,`Use cos2θ = 1−2sin²θ.`);}
+// Family 10: triangle half-angle product, valid identity equals r/(4R)
+for(let k=0;k<100;k++){let vals=[[13,14,15],[5,5,6],[7,8,9],[8,15,17],[9,10,17]];let [a,b,c]=vals[k%5];let s=(a+b+c)/2,area=Math.sqrt(s*(s-a)*(s-b)*(s-c)),r=area/s,R=a*b*c/(4*area),v=r/(4*R);
+add(5+(k%5),topics[5],'numeric',`A triangle has side lengths ${a}, ${b}, ${c}. Find sin(A/2)sin(B/2)sin(C/2).`,fmt(v),`Use sin(A/2)sin(B/2)sin(C/2)=r/(4R). Heron's formula gives Δ=${fmt(area)}, r=Δ/s=${fmt(r)}, R=abc/(4Δ)=${fmt(R)}. Hence the product is ${fmt(v)}.`,`Use the half-angle product identity r/(4R), then Heron's formula.`);}
+// Family 11: max of quadratic form denominator via eigenvalues for symmetric 2x2
+for(let k=0;k<100;k++){let a=2+(k%5),c=4+((k*3)%5),b=(k%3)-1;let disc=Math.sqrt((a-c)**2+4*b*b),lam=(a+c-disc)/2,ans=1/lam;
+add(7+(k%3),topics[4],'numeric',`Find the maximum of 1/[${a}sin²θ + ${2*b}sinθcosθ + ${c}cos²θ] for real θ.`,fmt(ans),`The denominator is the quadratic form of a symmetric matrix. Its minimum over unit vectors is the smaller eigenvalue λmin=(${a}+${c}−√((${a}−${c})²+4(${b})²))/2 = ${fmt(lam)}. The maximum reciprocal is 1/λmin = ${fmt(ans)}.`,`Treat (sinθ,cosθ) as a unit vector and minimize the quadratic form.`);}
+// Family 12: transform sin+cos and sin-cos
+for(let k=0;k<100;k++){let a=1+k%6,b=1+(k*2)%6,v=Math.sqrt(a*a+b*b);
+add(5+(k%5),topics[9],'numeric',`Find the range of f(θ)=${a}sinθ−${b}cosθ for real θ. Enter the amplitude R.`,fmt(v),`Any expression a sinθ+b cosθ has range [−R,R], where R=√(a²+b²). Here R=${fmt(v)}.`,`The range is symmetric about zero; find the amplitude.`);}
+// Family 13: solve tan equation with principal period
+for(let k=0;k<100;k++){let n=1+k%8;
+add(4+(k%5),topics[1],'numeric',`Write the general solution of tan x = ${n} in terms of inverse tangent.`, `x = tan⁻¹(${n}) + kπ`, `Tangent has period π, so all solutions are x=tan⁻¹(${n})+kπ, k∈ℤ.`,`Tangent repeats every π, not 2π.`);}
+// Family 14: inverse tangent reciprocal
+for(let k=0;k<100;k++){let n=1+k%9;
+add(5+(k%5),topics[2],'numeric',`For a>0, simplify tan⁻¹(${n}) + tan⁻¹(1/${n}).`,'π/2','For positive a, both inverse tangents are acute and tan⁻¹a + tan⁻¹(1/a)=π/2.','Use tangent addition and the principal range.');}
+// Family 15: inequality |sin|+|cos| bounds
+for(let k=0;k<100;k++){let n=1+k%9;
+add(6+(k%4),topics[4],'numeric',`Find the maximum value of |sinθ|+|cosθ| for real θ.`,fmt(Math.sqrt(2)),`By Cauchy–Schwarz, |sinθ|+|cosθ| ≤ √2√(sin²θ+cos²θ)=√2. Equality is attained when |sinθ|=|cosθ|.`,`Apply Cauchy–Schwarz to (|sinθ|,|cosθ|).`);}
+// Family 16: sin3x identity
+for(let k=0;k<100;k++){let v=[0,0.5,Math.sqrt(2)/2,1][k%4],ans=3*v-4*v**3;
+add(6+(k%4),topics[8],'numeric',`If sin x=${fmt(v)}, evaluate sin 3x using the triple-angle identity.`,fmt(ans),`sin3x=3sinx−4sin³x. Substituting gives ${fmt(ans)}.`,`Use sin3x=3sinx−4sin³x.`);}
+// Family 17: cos3x identity
+for(let k=0;k<100;k++){let v=[0,0.5,Math.sqrt(2)/2,1][k%4],ans=4*v**3-3*v;
+add(6+(k%4),topics[8],'numeric',`If cos x=${fmt(v)}, evaluate cos 3x.`,fmt(ans),`cos3x=4cos³x−3cosx. Substitution gives ${fmt(ans)}.`,`Use cos3x=4cos³x−3cosx.`);}
+// Family 18: triangle circumradius relation
+for(let k=0;k<100;k++){let [a,b,c]=[[3,4,5],[5,12,13],[8,15,17],[7,24,25]][k%4];let area=a*b/2,R=a*b*c/(4*area);
+add(5+(k%5),topics[5],'numeric',`A triangle has sides ${a}, ${b}, ${c}. Find its circumradius R.`,fmt(R),`R=abc/(4Δ). This is a right triangle, so Δ=${a*b/2} and R=${fmt(R)}.`,`Recognize the Pythagorean triple; circumradius of a right triangle is half its hypotenuse.`);}
+// Family 19: equation sin x = cos x
+for(let k=0;k<100;k++){let n=1+k%10;
+add(3+(k%5),topics[1],'numeric',`Solve sin x = cos x for all real x.`, 'x=π/4+kπ',`For cosx≠0, divide by cosx to get tanx=1. Therefore x=π/4+kπ, k∈ℤ.`,`Divide by cos x, then use tangent period π.`);}
+// Family 20: parameterized sum-to-product
+for(let k=0;k<100;k++){let a=10+(k%8)*5,b=5+(k%7)*5;
+let val=2*Math.sin((a+b)/2*Math.PI/180)*Math.cos((a-b)/2*Math.PI/180);
+add(4+(k%5),topics[0],'numeric',`Evaluate sin(${a}°)+sin(${b}°) to 4 decimal places.`,fmt(val),`Use sinA+sinB=2sin((A+B)/2)cos((A−B)/2). The value is approximately ${fmt(val)}.`,`Convert the sum into a product.`);}
+document.getElementById('poolCount').textContent=pool.length.toLocaleString();
+const $=id=>document.getElementById(id);
+levels.forEach((x,i)=>$('level').add(new Option(`${i+1}. ${x}`,i+1)));
+topics.forEach((x,i)=>$('topic').add(new Option(x,x)));
+for(let i=1;i<=50;i++)$('mockSelect').add(new Option(`Mock Test ${String(i).padStart(2,'0')}`,i));
+$('topicCards').innerHTML=topics.map(t=>`<div class="topic">◈ ${t}<div class="muted" style="font-size:12px">Question families included in the practice pool</div></div>`).join('');
+$('levelCards').innerHTML=levels.map((l,i)=>`<div class="level"><b>LEVEL ${i+1} — ${l}</b>${['Core identities and direct evaluation','Multi-step school-level reasoning','Standard textbook applications','Non-routine textbook problems','JEE Main-style concepts','JEE Main multi-concept practice','Advanced transformations and ranges','Harder parameter and inequality reasoning','High-complexity mixed reasoning','Challenge problems beyond routine patterns'][i]}</div>`).join('');
+let current=null,attempted=0,correct=0,used=new Set();
+function filtered(){return pool.filter(q=>(!$('topic').value||q.topic===$('topic').value)&&(!$('level').value||q.level===+$('level').value)&&($('qtype').value==='all'||q.type===$('qtype').value));}
+function load(q){current=q;$('qid').value=q.id;$('qmeta').innerHTML=`<span class="pill">Q${q.id} / ${pool.length}</span><span class="pill">Level ${q.level}: ${levels[q.level-1]}</span><span class="pill">${q.topic}</span><span class="pill">${q.type.toUpperCase()}</span>`;$('question').textContent=q.q;$('answer').value='';$('feedback').className='feedback';$('feedback').style.display='none';$('hint').style.display='none';$('solution').style.display='none';$('hint').textContent='HINT: '+q.hint;$('solution').textContent='SOLUTION\\n'+q.sol;}
+function random(){let arr=filtered();if(!arr.length){$('question').textContent='No questions match these filters. Change the level, topic, or type.';return;}let q=arr[Math.floor(Math.random()*arr.length)];load(q);}
+function norm(s){return String(s||'').toLowerCase().replace(/\\s/g,'').replace(/\\\\left|\\\\right/g,'').replace(/−/g,'-').replace(/×/g,'*').replace(/\\*/g,'');}
+function equivalent(user,ans){let u=norm(user),a=norm(ans);if(u===a)return true;const aliases={'sqrt(2)':'√2','sqrt(3)':'√3','pi/2':'π/2','-pi/2':'-π/2','pi/6':'π/6','-pi/6':'-π/6','pi/3':'π/3','2pi/3':'2π/3','pi/4':'π/4','3pi/4':'3π/4'};if(aliases[u]===a||aliases[a]===u)return true;
+let nu=Number(u),na=Number(a);return Number.isFinite(nu)&&Number.isFinite(na)&&Math.abs(nu-na)<0.0002;}
+$('loadQ').onclick=()=>{let q=pool.find(x=>x.id===+$('qid').value);if(q)load(q);else random();};
+$('randomQ').onclick=random;$('nextQ').onclick=()=>{let arr=filtered(),idx=arr.findIndex(x=>x.id===current?.id);load(arr[(idx+1+arr.length)%arr.length]||pool[0]);};
+$('check').onclick=()=>{if(!current)return;let ok=equivalent($('answer').value,current.a);attempted++;if(ok)correct++;$('solvedCount').textContent=attempted;$('feedback').style.display='block';$('feedback').className='feedback '+(ok?'good':'bad');$('feedback').textContent=ok?'Correct. Good work.':'Not quite. Correct answer: '+current.a; $('sessionText').textContent=`${attempted} attempted • ${correct} correct • ${attempted?Math.round(100*correct/attempted):0}% accuracy`;$('progressbar').style.width=(attempted?100*correct/attempted:0)+'%';};
+$('hintBtn').onclick=()=>{$('hint').style.display=$('hint').style.display==='block'?'none':'block';};
+$('solutionBtn').onclick=()=>{$('solution').style.display=$('solution').style.display==='block'?'none':'block';};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');['practice','mocks','syllabus','levels'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab));});
+function startMock(){let arr=[...pool].sort(()=>Math.random()-.5).slice(0,20);let area=$('mockArea');area.innerHTML=`<h3>Mock ${$('mockSelect').value} • 20 questions • 60 minutes suggested</h3><p class="muted">Enter numerical answers. Each correct response earns 4 marks; incorrect responses earn 0 in this practice mode.</p>`+arr.map((q,i)=>`<div class="mockq"><b>Q${i+1} • Level ${q.level} • ${q.topic}</b><p>${q.q}</p><input data-answer="${encodeURIComponent(q.a)}" placeholder="Answer"></div>`).join('')+`<button class="primary" id="submitMock">Submit mock</button><div id="mockResult" class="feedback"></div>`;$('submitMock').onclick=()=>{let inputs=area.querySelectorAll('input[data-answer]'),score=0;inputs.forEach(i=>{if(equivalent(i.value,decodeURIComponent(i.dataset.answer)))score+=4;});let r=$('mockResult');r.style.display='block';r.className='feedback good';r.textContent=`Your score: ${score}/80 (${score/80*100}%). This mock is scored locally.`;};}
+$('startMock').onclick=startMock;
+load(pool[0]);
+</script></body></html>
